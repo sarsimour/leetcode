@@ -1,0 +1,35 @@
+### 解题思路
+
+建立2个链表，分别存放小于x的节点，与大于等于x的节点信息；
+遍历一遍后，记录2个链表最后链接上的信息，将左链表即小的尾部接上头部
+大于等于部分的链表尾部可能会成环，故将r.next = None
+
+### 代码
+
+* python3
+
+```python
+# Definition for singly-linked list.
+# class ListNode:
+#     def __init__(self, val=0, next=None):
+#         self.val = val
+#         self.next = next
+class Solution:
+    def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
+        linklist_left, linklist_right =  ListNode(0), ListNode(0)
+        l, r = linklist_left, linklist_right
+        temp = head
+        while temp:
+            if temp.val < x:
+                l.next = temp
+                l = l.next
+            else:
+                r.next = temp
+                r = r.next
+            temp = temp.next
+        l.next = linklist_right.next    # 将小的尾部链接上大于等于的头部
+        r.next = None                   # 防止链表成环 
+        return linklist_left.next
+        
+```
+

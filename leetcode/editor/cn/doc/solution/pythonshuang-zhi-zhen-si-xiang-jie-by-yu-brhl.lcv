@@ -1,0 +1,41 @@
+### 解题思路
+
+原地修改双指针思想
+
+注意注意！！！
+
+1.要考虑暂存待反转链表的的前驱和反转链表的起始结点
+
+2.注意返回时根据left来判断返回pre指向的链接还是待反转链表前驱结点指向的链表
+
+时间复杂度为O（N），一趟遍历
+
+空间复杂度为O（1）
+
+### 代码
+
+* python
+
+```python
+
+class Solution:
+    def reverseBetween(self, head: ListNode, left: int, right: int) -> ListNode:
+        cur = head
+        result = ListNode(None)  # 待反转链表的首结点的前驱，用于拼接
+        pre = ListNode(-501)
+        for _ in range(left-1):
+            result = cur  # 暂存 待反转链表的首结点的前驱
+            cur = cur.next
+        start = cur  # 记录起始位置
+        for _ in range(right-left+1):
+            # 原地翻转
+            n = cur.next
+            cur.next = pre
+            pre, cur = cur, n
+        result.next = pre  # 拼接头部
+        start.next = cur   # 拼接尾部
+        return head if left > 1 is not None else pre
+        
+
+```
+

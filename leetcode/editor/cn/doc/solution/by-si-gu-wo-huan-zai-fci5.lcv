@@ -1,0 +1,29 @@
+### 解题思路
+
+一次遍历，筛选出 < 和 >= 的节点成两条链，再拼接
+
+### 代码
+
+* python3
+
+```python
+class Solution:
+    def partition(self, head: Optional[ListNode], x: int) -> Optional[ListNode]:
+        l1, l2 = ListNode(), ListNode()
+        cur1, cur2 = l1, l2
+        while head:
+            if head.val < x:
+                tmp = head.next
+                cur1.next = head
+                cur1 = cur1.next
+                head = tmp
+            else:
+                tmp = head.next
+                cur2.next = head
+                cur2 = cur2.next
+                head = tmp
+        cur2.next = None
+        cur1.next = l2.next
+        return l1.next
+```
+
