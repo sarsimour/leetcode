@@ -1,0 +1,54 @@
+### 解题思路
+
+此处撰写解题思路
+
+### 代码
+
+* c
+
+```c
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+
+
+struct ListNode *reverseBetween(struct ListNode *head, int left, int right)
+{
+   int i = 0;
+   struct ListNode *pleft, *pright, *pbehind;
+   struct ListNode *pthead = (struct ListNode *)malloc(sizeof(struct ListNode));
+   pthead->next = head;
+   pthead->val = 0;
+   struct ListNode *pt = pthead;
+   while (pt != NULL)
+   {
+      //printf("pt->val=%d\n", pt->val);
+      if (i == left - 1)
+      {
+         pbehind = pt;
+      }
+      if (i == left)
+      {
+         pleft = pt;
+      }
+      if (i > left && i <= right)
+      {
+         pleft->next = pt->next;
+         pt->next = pbehind->next;
+         pbehind->next = pt;
+         pt = pleft;
+      }
+
+      pt = pt->next;
+      i++;
+   }
+   head = pthead->next;
+   free(pthead);
+   return head;
+}
+```
+

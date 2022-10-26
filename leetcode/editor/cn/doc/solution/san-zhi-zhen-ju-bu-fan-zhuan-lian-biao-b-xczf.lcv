@@ -1,0 +1,55 @@
+### 解题思路
+
+还是先分析最简单的情况，链表为空、只有一个元素、反转区间左右边界值相等，直接返回原链表。
+使用for循环以将三指针移动left步，注意起始值从1开始，可以在纸上画画，链表区间他是从1开始算的。
+记录反转区间前的节点值tmpTail，初始化为prev，然后开始在区间内使用三指针反转链表。
+依据tmpTail是否为null判断首节点是否参与了反转，或者通过left是否为1也行，如果首节点没有参与反转则将反转的链表连接到原来的链表中返回原链表的head即可。
+如果链表首节点参与了反转则只需要将原链表的尾部添加到反转链表中，并把反转链表的首节点curr返回。
+
+### 代码
+
+* java
+
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+        if (head == null || head.next == null || left == right) {
+            return head;
+        }
+        ListNode prev = null;
+        ListNode curr = head;
+        ListNode next = curr.next;
+        for (int i = 1; i < left; i++) {
+            prev = curr;
+            curr = next;
+            next = curr.next;
+        }
+        ListNode tmpTail = prev;
+        for (int i = left; i < right; i++) {
+            curr.next = prev;
+            prev = curr;
+            curr = next;
+            next = curr.next;
+        }
+        curr.next = prev;
+        if (tmpTail != null) {
+            tmpTail.next.next = next;
+            tmpTail.next = curr;
+            return head;
+        }
+        head.next = next;
+        return curr;
+    }
+}
+```
+

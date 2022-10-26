@@ -1,0 +1,53 @@
+### 解题思路
+
+在两个边界点进行替换
+
+### 代码
+
+* java
+
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+        if (left != right) {
+            List<Integer> list = new ArrayList<>(right - left);
+            ListNode node = head;
+            ListNode currentHeadNode = null;
+            ListNode currentTailNode = null;
+            int index = 1;
+            while (node != null) {
+                if (index == left) {
+                    currentHeadNode = node;
+                } else if (index == right) {
+                    currentTailNode = node;
+                    Integer temp = currentHeadNode.val;
+                    currentHeadNode.val = currentTailNode.val;
+                    currentTailNode.val = temp;
+
+                    for (int i = list.size() - 1; i >= 0; i--) {
+                        currentHeadNode.next.val = list.get(i);
+                        currentHeadNode = currentHeadNode.next;
+                    }
+
+                } else if (index > left && index < right) {
+                    list.add(node.val);
+                }
+                index++;
+                node = node.next;
+            }
+        }
+        return head;
+    }
+}
+```
+

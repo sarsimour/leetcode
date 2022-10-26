@@ -1,0 +1,60 @@
+#### 解题思路
+
+首先根据题目要反转链表，将后面的节点反转到前面，大家不觉得我们**可以利用数据结构的栈**来操作吗？
+首先我们将指针移到相应的位置，然后入栈。
+然后我们构建一个新的链表，一次一次遍历在left之前保存着left之前的节点
+在left和right之间保存着栈里面元素的节点值
+在right之后保存着right之后的节点值
+**注意要新new 一个节点**
+
+**进阶的写不出来**
+
+### 代码
+
+* java
+
+```java
+/**
+ * Definition for singly-linked list.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode() {}
+ *     ListNode(int val) { this.val = val; }
+ *     ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ * }
+ */
+class Solution {
+    int count = 1;
+    public ListNode reverseBetween(ListNode head, int left, int right) {
+        ListNode vir_head =new ListNode(-1,head);
+        ListNode curr =vir_head;
+        for(int i =0;i<left;i++){
+            curr=curr.next;
+        }
+        Stack<Integer> stack =new Stack();
+        for(int i =left;i<=right;i++){
+            stack.push(curr.val);
+            curr=curr.next;
+        }
+        ListNode res =new ListNode(-1);
+        ListNode temp =res;
+        for(int i =1;i<left;i++){
+            res.next=new ListNode(head.val);
+            head=head.next;
+            res=res.next;
+        }
+        for(int i =left;i<=right;i++){
+            res.next=new ListNode(stack.pop());
+            res=res.next;
+        }
+        while(curr!=null){
+            res.next=new ListNode(curr.val);
+            curr=curr.next;
+            res=res.next;
+        }
+        return temp.next;
+    }
+}
+```
+

@@ -69,6 +69,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[234]回文链表.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[234]回文链表.md" />
+              <option name="frontendQuestionId" value="leetcode.cn234" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[234]回文链表.py" />
+              <option name="titleSlug" value="palindrome-linked-list" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[23]合并K个升序链表.py">
           <value>
             <LeetcodeEditor>
@@ -80,6 +91,17 @@
             </LeetcodeEditor>
           </value>
         </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[25]K 个一组翻转链表.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[25]K 个一组翻转链表.md" />
+              <option name="frontendQuestionId" value="leetcode.cn25" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[25]K 个一组翻转链表.py" />
+              <option name="titleSlug" value="reverse-nodes-in-k-group" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
         <entry key="$PROJECT_DIR$/leetcode/editor/cn/[26]删除有序数组中的重复项.py">
           <value>
             <LeetcodeEditor>
@@ -88,6 +110,28 @@
               <option name="host" value="leetcode.cn" />
               <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[26]删除有序数组中的重复项.py" />
               <option name="titleSlug" value="remove-duplicates-from-sorted-array" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[303]区域和检索 - 数组不可变.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[303]区域和检索 - 数组不可变.md" />
+              <option name="frontendQuestionId" value="leetcode.cn303" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[303]区域和检索 - 数组不可变.py" />
+              <option name="titleSlug" value="range-sum-query-immutable" />
+            </LeetcodeEditor>
+          </value>
+        </entry>
+        <entry key="$PROJECT_DIR$/leetcode/editor/cn/[304]二维区域和检索 - 矩阵不可变.py">
+          <value>
+            <LeetcodeEditor>
+              <option name="contentPath" value="$PROJECT_DIR$/leetcode/editor/cn/doc/content/[304]二维区域和检索 - 矩阵不可变.md" />
+              <option name="frontendQuestionId" value="leetcode.cn304" />
+              <option name="host" value="leetcode.cn" />
+              <option name="path" value="$PROJECT_DIR$/leetcode/editor/cn/[304]二维区域和检索 - 矩阵不可变.py" />
+              <option name="titleSlug" value="range-sum-query-2d-immutable" />
             </LeetcodeEditor>
           </value>
         </entry>
