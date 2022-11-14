@@ -13,26 +13,19 @@ class Solution(object):
         for char_ in t:
             t_count[char_] = t_count.get(char_, 0) + 1
         s_count = {}
-        for char_ in s:
-            s_count[char_] = s_count.get(char_, 0) + 1
-        left, right = 0, len(s) - 1
-        able_to_right, able_to_left = True, True
-        while left < right:
-            if not able_to_left and not able_to_right:
-                if any([s_count.get(char_, 0) < t_count[char_] for char_ in t_count.keys()]):
-                    return ""
-                else:
-                    return s[left: right + 1]
-            if able_to_right and (s[left] not in t_count.keys() or s_count.get(s[left], 0) > t_count[s[left]]):
+        left, right = 0, 0
+        best_res = (0, len(s))
+        has_res = False
+        while right < len(s):
+            right += 1
+            s_count[s[right - 1]] = s_count.get(s[right - 1], 0) + 1
+            # print(s_count, left, right)
+            while all([s_count.get(char_, 0) >= t_count[char_] for char_ in t_count.keys()]):
+                has_res = True
                 s_count[s[left]] -= 1
-                left = left + 1
-                if s[left] in t_count.keys() and s_count[s[left]] == t_count[s[left]]:
-                    able_to_right = False
-            if able_to_left and (s[right] not in t_count.keys() or s_count.get(s[right], 0) > t_count[s[right]]):
-                s_count[s[right]] -= 1
-                right -= 1
-                if s[right] in t_count.keys() and s_count[s[right]] == t_count[s[right]]:
-                    able_to_left = False
+                left += 1
+            if has_res and right - left + 1 < best_res[1] - best_res[0]:
+                best_res = (left - 1, right)
 
-        return ""
+        return s[best_res[0]: best_res[1]] if has_res else ""
 # leetcode submit region end(Prohibit modification and deletion)
